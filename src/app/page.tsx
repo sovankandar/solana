@@ -1,22 +1,18 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-import '@solana/wallet-adapter-react-ui/styles.css';
-import { Provider } from 'react-redux';
-import { store } from './store/store';
-
-const WalletClientProviderDynamic = dynamic(
-  () => import('./components/WalletClientProvider').then(mod => mod.WalletClientProvider),
-  { 
-    ssr: false,
-    loading: () => <div>Loading...</div>
-  }
-);
+import Link from 'next/link';
+import { Header } from './components/landing/Header';
+import { Hero } from './components/landing/Hero';
+import { About } from './components/landing/About';
+import { Footer } from './components/landing/Footer';
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <WalletClientProviderDynamic />
-    </Provider>
+    <main className="min-h-screen">
+      <Header />
+      <Hero />
+      <About />
+      <Footer />
+    </main>
   );
 }
